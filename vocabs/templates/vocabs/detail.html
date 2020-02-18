@@ -46,7 +46,7 @@
                 </tr>
             </table>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
+{% if example %}<p>Example found</p>{% endif %}
 <form action="{% url 'vocabs:vote' vocab.id %}" method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-success" name="answer" value="Correct">
