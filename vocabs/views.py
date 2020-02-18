@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Dictionary
+from .models import Dictionary, Example
+
 
 def index(request):
     vocab = Dictionary.get_random()
@@ -18,6 +19,14 @@ def results(request, vocab_id):
     vocab = get_object_or_404(Dictionary, pk=vocab_id)
     return render(request, 'vocabs/results.html', {'vocab': vocab})
 
+def update(request, vocab_id):
+    vocab = get_object_or_404(Dictionary, pk=vocab_id)
+    form = request.POST
+    print("Printing from Update {}".format(form['example']))
+    vocab.example_set.create(example_text=form['example'])
+
+    return render(request, 'vocabs/results.html', {'vocab': vocab})
+
 def vote(request, vocab_id):
     vocab = get_object_or_404(Dictionary, pk=vocab_id)
     vocab.update_total_attempts()
@@ -32,9 +41,9 @@ def vote(request, vocab_id):
             if vocab.total_false_attempts > 2:
                 pass
                 # TODO: add return logic
-                return HttpResponseRedirect(reverse('vocabs:detail', args=(vocab.id, "example")))
+                context = {'vocab': vocab, }
+                return render(request, 'vocabs/detail_example.html', context)
 
 
     vocab.save()
     return HttpResponseRedirect(reverse('vocabs:results', args=(vocab.id,)))
-

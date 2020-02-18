@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:vocab_id>/', views.detail, name='detail'),
     path('<int:vocab_id>/results/', views.results, name='results'),
     path('<int:vocab_id>/vote/', views.vote, name='vote'),
+    path('<int:vocab_id>/update/', views.update, name='update'),
 ]

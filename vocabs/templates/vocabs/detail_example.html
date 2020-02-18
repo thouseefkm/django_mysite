@@ -54,14 +54,13 @@
                 </tr>
             </table>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form action="{% url 'vocabs:vote' vocab.id %}" method="post">
+<form action="{% url 'vocabs:update' vocab.id %}" method="post">
     {% csrf_token %}
-    <button type="submit" class="btn btn-success" name="answer" value="Correct">
-        <i class="fas fa-check"> Correct</i>
-    </button>
-    <button type="submit" class="btn btn-danger" name="answer" value="Incorrect">
-        <i class="fas fa-times"> Incorrect</i>
-    </button>
+    <div class="form-group">
+        <label for="example">You have made multiple incorrect attempts. Write an example for the <b>{{ vocab.hindi}}</b></label>
+        <input type="text" class="form-control" id="example" placeholder="Your example sentence" name="example" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
 </form>
         </div>
     </div>

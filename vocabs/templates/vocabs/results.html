@@ -37,6 +37,14 @@
                     <td>{{ vocab.hindi }}</td>
                 </tr>
                 <tr>
+                <th>Examples</th>
+                <td>
+                    {% for ex in vocab.example_set.all %}
+                    <li>{{ ex.example_text }}</li>
+                    {% endfor %}
+                </td>
+                </tr>
+                <tr>
                     <th>Total Attempts</th>
                     <td>{{ vocab.attempts }}/5</td>
                 </tr>
