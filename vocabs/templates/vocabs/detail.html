@@ -56,10 +56,10 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <form action="{% url 'vocabs:vote' vocab.id %}" method="post">
     {% csrf_token %}
-    <button type="submit" class="btn btn-success" name="answer" value="Correct">
+    <button type="submit" class="btn btn-success btn-lg" name="answer" value="Correct">
         <i class="fas fa-check"> Correct</i>
     </button>
-    <button type="submit" class="btn btn-danger" name="answer" value="Incorrect">
+    <button type="submit" class="btn btn-danger btn-lg" name="answer" value="Incorrect">
         <i class="fas fa-times"> Incorrect</i>
     </button>
 </form>

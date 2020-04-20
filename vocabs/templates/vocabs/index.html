@@ -25,8 +25,16 @@
     <div class="jumbotron">
 <div class="container p-5 bg-dark text-white">
     {% if vocab %}
+        {% if vocab.last_attempt == 'Right' %}
+            <span class="badge badge-success">Last attempt {{ vocab.last_attempt }}</span>
+        {% elif vocab.last_attempt == 'Wrong' %}
+            <span class="badge badge-danger">Last attempt {{ vocab.last_attempt }}</span>
+        {% else %}
+            <span class="badge badge-warning">{{ vocab.last_attempt }}</span>
+        {% endif %}
+
         <h1 class="text-capitalize">{{ vocab.english }}</h1>
-        <button type="button" class="btn btn-info" onclick="window.location.href = '{% url 'vocabs:detail' vocab.id %}';">Done</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="window.location.href = '{% url 'vocabs:detail' vocab.id %}';">Done</button>
     {% else %}
         <p>You have mastered all of the words!!
             <i class="far fa-grin-beam"></i>
@@ -36,6 +44,7 @@
     {% endif %}
 </div></div>
 </center>
+<a href="{% url 'vocabs:dashboard' %}">see your Dashboard</a>
 </body>
 </html>
 
