@@ -25,7 +25,7 @@ SECRET_KEY = '87ns4(=8mh3*lz=vfkr(0o8pg=jftaz!0*fen_%g8^^u7%r6fu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.43', 'mydjango.local', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.1.43', '127.0.0.1', 'mydjango.local']
 
 
 # Application definition
@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+# mod
 
 DATABASES = {
     'default': {

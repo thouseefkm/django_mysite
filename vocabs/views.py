@@ -68,6 +68,7 @@ def vote(request, vocab_id):
         if vocab.total_false_attempts > 1:
             vocab.decrement_attempts()
             if vocab.total_false_attempts > 2:
+                vocab.save()
                 context = {'vocab': vocab, }
                 return render(request, 'vocabs/detail_example.html', context)
 
